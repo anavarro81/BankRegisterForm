@@ -88,6 +88,23 @@ const setFieldError = (field, message) => {
   }
 };
 
+function guardarDatos() {
+  const nombreEl = document.getElementById("nombre").value
+  const apellidosEl = document.getElementById("apellidos").value
+  const direccionEl = document.getElementById("direccion").value
+  const emailEl = document.getElementById("email").value
+  const confirmarEmailEl = document.getElementById("confirmarEmail").value
+  const dniEl = document.getElementById("dni").value
+  const passwordEl = document.getElementById("password").value
+
+  console.log(passwordEl);
+  console.log(dniEl);
+  console.log(direccionEl);
+  console.log(confirmarEmailEl);
+  console.log(emailEl);
+  console.log(apellidosEl);
+  console.log(nombreEl);
+}
 /* Comprueba que todos los campos sean validos */
 // Si alguna clave (campo) no es true, el formulario es incorrecto.
 const isValidForm = (form) => {
@@ -98,6 +115,7 @@ const isValidForm = (form) => {
       return true;
     }
   }
+  guardarDatos()
   return false;
 };
 
@@ -109,7 +127,7 @@ const isValidForm = (form) => {
 
 
 
-  
+
 
 
 
