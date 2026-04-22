@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Usuario - Banco</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="./script.js" defer></script>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Registro de Cliente</h2>
+      <form id="registrationForm">
+        <div class="form-group">
+          <label for="nombre" id="nombreLabel">Nombre:</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder=" "
+            required
+          />
+          <span id="nombreErrorMsg" class="error-msg"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="apellidos">Apellidos:</label>
+          <input
+            type="text"
+            id="apellidos"
+            name="apellidos"
+            placeholder=" "
+            required
+          />
+          <span class="error-msg"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="direccion">Dirección:</label>
+          <textarea name="direccion" id="direccion"> </textarea>
+          <span class="error-msg"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder=" "
+            
+            required
+          />
+          <span class="error-msg"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-email">Confirmar email:</label>
+          <input
+            type="email"
+            id="confirmEmail"
+            name="confirmEmail"
+            placeholder=" "
+            required
+          />
+          <span class="error-msg"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="dni">DNI:</label>
+          <input type="text" id="dni" name="dni" placeholder=" " required />
+          <span class="error-msg"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="intereses">Intereses:</label>
+          <select name="intereses" id="intereses">
+            <option value="inmobilario">Mercado inmobiliario</option>
+            <option value="bolsa">Bolsa</option>
+            <option value="bienesEstatales">Bienes estatales</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder=""
+            required
+          />
+          <span class="error-msg">Mínimo 8 caracteres.</span>
+        </div>
+
+        <button type="submit" id="btn-registrar" disabled>Registrar</button>
+      </form>
+    </div>
+  </body>
+</html>
