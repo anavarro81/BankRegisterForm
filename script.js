@@ -67,7 +67,7 @@ const loadData = () => {
 const loadUserData = () => {
   const user = localStorage.getItem("user");
 
-  console.log("user ", user);
+  
 
   const userUlEl = document.getElementById("user-data");
   userUlEl.innerHTML = "";
@@ -75,7 +75,7 @@ const loadUserData = () => {
   if (user) {
     let userData = JSON.parse(user);
 
-    console.log("userData ", userData);
+    
 
     for (const field in userData) {
       userUlEl.innerHTML += `<li><strong>${field}:</strong> ${userData[field]}</li> `;
@@ -86,7 +86,7 @@ const loadUserData = () => {
 };
 
 const addEvenOnLoad = () => {
-  console.log("current page ");
+  
 
   // Limpieza de localStorage entre llamadas.
   localStorage.removeItem("user");

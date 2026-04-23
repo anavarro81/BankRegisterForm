@@ -177,7 +177,7 @@ const validarApellidos = (apellidos) => {
   }
 
   const apellidosArr = apellidos.split(" ");
-  console.log("apellidosArr ", apellidosArr);
+  
 
   let apellidoValido = true;
   let index = 0;
@@ -194,9 +194,9 @@ const validarApellidos = (apellidos) => {
 };
 
 const nombreApellidosValidos = (cadena) => {
-  console.log("cadena ", cadena);
+  
   soloLetras(cadena);
-  console.log("soloLetras(cadena) ", soloLetras(cadena));
+  
 
   const letrasValidas = "AZÑÁÉÍÓÚ";
   const primera = cadena.charAt(0);
