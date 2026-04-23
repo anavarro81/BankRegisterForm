@@ -10,6 +10,7 @@ Aplicación web simple que muestra un formulario de alta y valida los datos del 
 - Cada vez que un campo pierde el foco se ejecuta la función de validación correspondiente en `validator.js`.
 - Si un campo no es válido se muestra un mensaje junto a la etiqueta y el botón de registro queda deshabilitado hasta que todos los campos sean válidos.
 - Cuando todos los campos son correctos y se pulsa en registar se guardan la informacion del usuario en localStorage y se redirige a: `successfullRegister.html`
+- En la página de confirmación se leen los datos de localStorage y se muestran. 
 
 ## Archivos principales
 
@@ -30,5 +31,5 @@ Aplicación web simple que muestra un formulario de alta y valida los datos del 
 
 
 
-## Notas y próximos pasos
+
 
