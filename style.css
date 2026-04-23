@@ -18,6 +18,14 @@ body {
   max-width: 450px;
 }
 
+.confirm-Modal-Container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+}
+
 h2 {
   color: #2c3e50;
   margin-bottom: 1.5rem;
@@ -116,4 +124,8 @@ button:disabled {
 
 .visible {
   display: block;
+}
+
+.user-data {
+  list-style: none;
 }

@@ -1,5 +1,12 @@
-import { validarPassword, validarDni, validarConfirmarEmail, validarEmail, validarDireccion, validarApellidos, validarNombre } from "./validator.js";
-
+import {
+  validarPassword,
+  validarDni,
+  validarConfirmarEmail,
+  validarEmail,
+  validarDireccion,
+  validarApellidos,
+  validarNombre,
+} from "./validator.js";
 
 const validForm = {
   nombre: false,
@@ -13,10 +20,6 @@ const validForm = {
 
 const validarField = (field) => {
   let validField = {};
-
-  console.log("field  ", field);
-  console.log("field value ", field.value);
-  console.log("field name ", field.name);
 
   switch (field.name) {
     case "nombre":
@@ -54,8 +57,40 @@ const validarField = (field) => {
   btnRegistrar.disabled = isValidForm(validForm);
 };
 
-// Al cargar la página le agregamos la función validarField al evento onBlur
-const addEvenToInput = () => {
+// Al cargar la página le agregamos la función validarField a los inputs y el text area.
+// Se agrega el evento para enviar el formulario al boton registrar.
+
+const loadData = () => {
+  location?.href.includes("index") ? addEvenOnLoad() : loadUserData();
+};
+
+const loadUserData = () => {
+  const user = localStorage.getItem("user");
+
+  console.log("user ", user);
+
+  const userUlEl = document.getElementById("user-data");
+  userUlEl.innerHTML = "";
+
+  if (user) {
+    let userData = JSON.parse(user);
+
+    console.log("userData ", userData);
+
+    for (const field in userData) {
+      userUlEl.innerHTML += `<li><strong>${field}:</strong> ${userData[field]}</li> `;
+    }
+  } else {
+    userUlEl.innerHTML = "No hay información del usuario";
+  }
+};
+
+const addEvenOnLoad = () => {
+  console.log("current page ");
+
+  // Limpieza de localStorage entre llamadas.
+  localStorage.removeItem("user");
+
   const inputsEl = document.getElementsByTagName("input");
 
   for (let index = 0; index < inputsEl.length; index++) {
@@ -68,6 +103,12 @@ const addEvenToInput = () => {
     .getElementById("direccion")
     .addEventListener("blur", () => {
       validarField(event.target);
+    });
+
+  const submitBtnEl = document
+    .getElementById("btn-registrar")
+    .addEventListener("click", (event) => {
+      saveDatoToLocalStorage(event.target);
     });
 };
 
@@ -88,47 +129,31 @@ const setFieldError = (field, message) => {
   }
 };
 
-function guardarDatos() {
-  const nombreEl = document.getElementById("nombre").value
-  const apellidosEl = document.getElementById("apellidos").value
-  const direccionEl = document.getElementById("direccion").value
-  const emailEl = document.getElementById("email").value
-  const confirmarEmailEl = document.getElementById("confirmarEmail").value
-  const dniEl = document.getElementById("dni").value
-  const passwordEl = document.getElementById("password").value
+function saveDatoToLocalStorage(e) {
+  const user = {
+    nombre: document.getElementById("nombre").value || "No informado",
+    apellidos: document.getElementById("apellidos").value || "No inforado",
+    direccion: document.getElementById("direccion").value || "No informado",
+    email: document.getElementById("confirmEmail").value || "No informado",
+    intereres: document.getElementById("intereses").value || "No informado",
+    dni: document.getElementById("dni").value || "No informado",
+  };
 
-  console.log(passwordEl);
-  console.log(dniEl);
-  console.log(direccionEl);
-  console.log(confirmarEmailEl);
-  console.log(emailEl);
-  console.log(apellidosEl);
-  console.log(nombreEl);
+  localStorage.setItem("user", JSON.stringify(user));
+  window.location.href = "successfullRegister.html";
 }
 /* Comprueba que todos los campos sean validos */
 // Si alguna clave (campo) no es true, el formulario es incorrecto.
 const isValidForm = (form) => {
-  console.log("validForm ", validForm);
-
   for (const clave in form) {
     if (!form[clave]) {
       return true;
     }
   }
-  guardarDatos()
+
   return false;
 };
 
 // Los nombres deben empezar por mayúsculas y el campo no admite números o símbolos, sólo letras.
 
-
-
-
-
-
-
-
-
-
-
-window.onload = addEvenToInput;
+window.onload = loadData;
